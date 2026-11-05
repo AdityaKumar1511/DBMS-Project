@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Student Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="dashboard">
+    <div class="app-container">
+        <aside class="app-sidebar"></aside>
+
+        <main class="app-main">
+            <header class="app-topbar">
+                <div class="topbar-left">
+                    <button class="mobile-toggle" id="mobile-sidebar-toggle">Menu</button>
+                    <div class="page-title-group">
+                        <h2>Dashboard</h2>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-data">
+                            <h3>Students</h3>
+                            <div class="stat-number" id="stat-students">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-data">
+                            <h3>Courses</h3>
+                            <div class="stat-number" id="stat-courses">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-data">
+                            <h3>Departments</h3>
+                            <div class="stat-number" id="stat-departments">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-data">
+                            <h3>Faculty</h3>
+                            <div class="stat-number" id="stat-faculty">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-data">
+                            <h3>Average marks</h3>
+                            <div class="stat-number" id="stat-average-marks">0.00</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-data">
+                            <h3>Defaulters</h3>
+                            <div class="stat-number" id="stat-defaulters">0</div>
+                            <div class="stat-subtext">Below 75% attendance</div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="grid-2">
+                    <section class="panel">
+                        <div class="panel-header">
+                            <div class="panel-title">Department summary</div>
+                            <span class="panel-count">View: department_summary</span>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Department</th>
+                                        <th>Students</th>
+                                        <th>Courses</th>
+                                        <th>Faculty</th>
+                                        <th>Avg marks</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dept-summary-tbody">
+                                    <tr><td colspan="5" class="loading-row">Loading…</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="panel">
+                        <div class="panel-header">
+                            <div class="panel-title">Top students</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Student</th>
+                                        <th>Department</th>
+                                        <th>Courses</th>
+                                        <th>Average</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="top-students-tbody">
+                                    <tr><td colspan="5" class="loading-row">Loading…</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/layout.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

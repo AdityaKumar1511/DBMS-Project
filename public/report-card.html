@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report card | Student Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="report-card">
+    <div class="app-container">
+        <aside class="app-sidebar"></aside>
+
+        <main class="app-main">
+            <header class="app-topbar">
+                <div class="topbar-left">
+                    <button class="mobile-toggle" id="mobile-sidebar-toggle">Menu</button>
+                    <div class="page-title-group">
+                        <h2>Report card</h2>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary btn-print" onclick="window.print()">Print</button>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="filters-bar report-filters">
+                    <label class="form-label" for="report-student-select">Student</label>
+                    <select id="report-student-select" class="form-select report-select">
+                        <option value="">Loading students…</option>
+                    </select>
+                </div>
+
+                <div class="report-card-container" id="report-card-paper">
+                    <div class="report-header">
+                        <div class="report-title">
+                            <h2>Academic transcript</h2>
+                            <p>Student Management System</p>
+                        </div>
+                        <div class="report-source">View: student_report_card</div>
+                    </div>
+
+                    <div class="report-meta" id="report-meta-box">
+                        <div>
+                            <span class="meta-label">Student ID</span>
+                            <span class="meta-value mono" id="rep-id">—</span>
+                        </div>
+                        <div>
+                            <span class="meta-label">Department</span>
+                            <span class="meta-value" id="rep-dept">—</span>
+                        </div>
+                        <div>
+                            <span class="meta-label">Name</span>
+                            <span class="meta-value" id="rep-name">—</span>
+                        </div>
+                        <div>
+                            <span class="meta-label">Batch</span>
+                            <span class="meta-value" id="rep-year">—</span>
+                        </div>
+                        <div>
+                            <span class="meta-label">Email</span>
+                            <span class="meta-value" id="rep-email">—</span>
+                        </div>
+                        <div>
+                            <span class="meta-label">Phone</span>
+                            <span class="meta-value" id="rep-phone">—</span>
+                        </div>
+                    </div>
+
+                    <table class="report-table">
+                        <thead>
+                            <tr>
+                                <th>Sem</th>
+                                <th>Course</th>
+                                <th>Credits</th>
+                                <th>Instructor</th>
+                                <th>Internal</th>
+                                <th>External</th>
+                                <th>Total</th>
+                                <th>Grade</th>
+                                <th>Points</th>
+                            </tr>
+                        </thead>
+                        <tbody id="report-courses-tbody">
+                            <tr><td colspan="9" class="report-empty">Select a student.</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="report-summary" id="report-summary-box">
+                        <div>
+                            <div class="label">Credits</div>
+                            <div class="value" id="rep-credits">—</div>
+                        </div>
+                        <div>
+                            <div class="label">Average</div>
+                            <div class="value" id="rep-avg">—</div>
+                        </div>
+                        <div>
+                            <div class="label">CGPA</div>
+                            <div class="value" id="rep-cgpa">—</div>
+                        </div>
+                        <div>
+                            <div class="label">Standing</div>
+                            <div class="value value-sm" id="rep-standing">—</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/layout.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/report-card.js"></script>
+</body>
+</html>

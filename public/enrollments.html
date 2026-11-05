@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollments | Student Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="enrollments">
+    <div class="app-container">
+        <aside class="app-sidebar"></aside>
+
+        <main class="app-main">
+            <header class="app-topbar">
+                <div class="topbar-left">
+                    <button class="mobile-toggle" id="mobile-sidebar-toggle">Menu</button>
+                    <div class="page-title-group">
+                        <h2>Enrollments</h2>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary" id="btn-open-enroll">Enroll student</button>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="filters-bar">
+                    <select id="enroll-filter-course" class="form-select">
+                        <option value="">All courses</option>
+                    </select>
+                    <select id="enroll-filter-semester" class="form-select">
+                        <option value="">All semesters</option>
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                        <option value="3">Semester 3</option>
+                        <option value="4">Semester 4</option>
+                        <option value="5">Semester 5</option>
+                        <option value="6">Semester 6</option>
+                        <option value="7">Semester 7</option>
+                        <option value="8">Semester 8</option>
+                    </select>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-title">All enrollments</div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Student</th>
+                                    <th>Course</th>
+                                    <th>Semester</th>
+                                    <th>Instructor</th>
+                                    <th>Date</th>
+                                    <th>Grade</th>
+                                    <th class="cell-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="enrollments-tbody">
+                                <tr><td colspan="8" class="loading-row">Loading…</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="enroll-modal">
+        <div class="modal-card modal-lg">
+            <div class="modal-header">
+                <h3 class="modal-title">Enroll student</h3>
+                <button class="modal-close" onclick="closeModal('enroll-modal')">&times;</button>
+            </div>
+            <form id="enroll-form">
+                <div class="modal-body">
+                    <div class="form-note form-note-spaced">
+                        Calls <span class="mono">enroll_student()</span> inside a transaction and creates the marks record.
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="enroll-student-select">Student <span class="req">*</span></label>
+                        <select id="enroll-student-select" class="form-control" required>
+                            <option value="">Select student</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="enroll-course-select">Course <span class="req">*</span></label>
+                        <select id="enroll-course-select" class="form-control" required>
+                            <option value="">Select course</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="enroll-semester">Semester <span class="req">*</span></label>
+                        <select id="enroll-semester" class="form-control" required>
+                            <option value="1">Semester 1</option>
+                            <option value="2">Semester 2</option>
+                            <option value="3">Semester 3</option>
+                            <option value="4" selected>Semester 4</option>
+                            <option value="5">Semester 5</option>
+                            <option value="6">Semester 6</option>
+                            <option value="7">Semester 7</option>
+                            <option value="8">Semester 8</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('enroll-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="btn-submit-enroll">Enroll</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="delete-modal">
+        <div class="modal-card modal-sm">
+            <div class="modal-header">
+                <h3 class="modal-title">Unenroll student</h3>
+                <button class="modal-close" onclick="closeModal('delete-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="delete-prompt-text">Cancel this enrollment?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('delete-modal')">Cancel</button>
+                <button type="button" class="btn btn-danger" id="btn-confirm-delete">Unenroll</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/layout.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/enrollments.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | Student Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="courses">
+    <div class="app-container">
+        <aside class="app-sidebar"></aside>
+
+        <main class="app-main">
+            <header class="app-topbar">
+                <div class="topbar-left">
+                    <button class="mobile-toggle" id="mobile-sidebar-toggle">Menu</button>
+                    <div class="page-title-group">
+                        <h2>Courses</h2>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary" id="btn-add-course">Add course</button>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="filters-bar">
+                    <select id="course-filter-dept" class="form-select">
+                        <option value="">All departments</option>
+                    </select>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-title">All courses</div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Course</th>
+                                    <th>Credits</th>
+                                    <th>Department</th>
+                                    <th>Instructor</th>
+                                    <th>Enrollments</th>
+                                    <th class="cell-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="courses-tbody">
+                                <tr><td colspan="7" class="loading-row">Loading…</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="course-modal">
+        <div class="modal-card modal-lg">
+            <div class="modal-header">
+                <h3 class="modal-title" id="course-modal-title">Add course</h3>
+                <button class="modal-close" onclick="closeModal('course-modal')">&times;</button>
+            </div>
+            <form id="course-form">
+                <div class="modal-body">
+                    <input type="hidden" id="course-id">
+                    <div class="form-group">
+                        <label class="form-label" for="course-name">Course name <span class="req">*</span></label>
+                        <input type="text" id="course-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="course-credits">Credits <span class="req">*</span></label>
+                        <input type="number" id="course-credits" class="form-control" min="1" max="6" value="4" required>
+                        <span class="form-hint">Database CHECK constraint: 1 to 6.</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="course-dept">Department <span class="req">*</span></label>
+                        <select id="course-dept" class="form-control" required>
+                            <option value="">Select department</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="course-faculty">Instructor</label>
+                        <select id="course-faculty" class="form-control">
+                            <option value="">Unassigned</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('course-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="btn-save-course">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="delete-modal">
+        <div class="modal-card modal-sm">
+            <div class="modal-header">
+                <h3 class="modal-title">Delete course</h3>
+                <button class="modal-close" onclick="closeModal('delete-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="delete-prompt-text">Delete this course?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('delete-modal')">Cancel</button>
+                <button type="button" class="btn btn-danger" id="btn-confirm-delete">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/layout.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/courses.js"></script>
+</body>
+</html>

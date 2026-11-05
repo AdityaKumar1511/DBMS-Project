@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty | Student Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="faculty">
+    <div class="app-container">
+        <aside class="app-sidebar"></aside>
+
+        <main class="app-main">
+            <header class="app-topbar">
+                <div class="topbar-left">
+                    <button class="mobile-toggle" id="mobile-sidebar-toggle">Menu</button>
+                    <div class="page-title-group">
+                        <h2>Faculty</h2>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary" id="btn-add-faculty">Add faculty</button>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="filters-bar">
+                    <select id="faculty-filter-dept" class="form-select">
+                        <option value="">All departments</option>
+                    </select>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-title">All faculty</div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Courses</th>
+                                    <th class="cell-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="faculty-tbody">
+                                <tr><td colspan="6" class="loading-row">Loading…</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="faculty-modal">
+        <div class="modal-card modal-md">
+            <div class="modal-header">
+                <h3 class="modal-title" id="faculty-modal-title">Add faculty</h3>
+                <button class="modal-close" onclick="closeModal('faculty-modal')">&times;</button>
+            </div>
+            <form id="faculty-form">
+                <div class="modal-body">
+                    <input type="hidden" id="faculty-id">
+                    <div class="form-group">
+                        <label class="form-label" for="faculty-name">Full name <span class="req">*</span></label>
+                        <input type="text" id="faculty-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="faculty-email">Email <span class="req">*</span></label>
+                        <input type="email" id="faculty-email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="faculty-dept">Department <span class="req">*</span></label>
+                        <select id="faculty-dept" class="form-control" required>
+                            <option value="">Select department</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('faculty-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="btn-save-faculty">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="delete-modal">
+        <div class="modal-card modal-sm">
+            <div class="modal-header">
+                <h3 class="modal-title">Remove faculty</h3>
+                <button class="modal-close" onclick="closeModal('delete-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="delete-prompt-text">Remove this faculty member?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('delete-modal')">Cancel</button>
+                <button type="button" class="btn btn-danger" id="btn-confirm-delete">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/layout.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/faculty.js"></script>
+</body>
+</html>
